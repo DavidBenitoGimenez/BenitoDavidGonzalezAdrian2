@@ -27,7 +27,7 @@ public abstract class Allotjament {
     // Métode toString
     @Override
     public String toString() {
-        return "Nom=" + nom_ + ", Id=" + idAllotjament_;
+        return "Nom = " + nom_ + ", Id = " + idAllotjament_;
     }
 
     // Métode abstracto
