@@ -1,8 +1,8 @@
+package prog2.vista;
 /*
  * Universitat de Barcelona
  * Programació 2
  */
-package prog2.vista;
 
 import java.util.Scanner;
 
