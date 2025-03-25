@@ -41,12 +41,12 @@ public abstract class Camping implements InCamping {
     }
 
     // Métodes per agregar diferents tipus d'allotjaments
-    public void afegirParcela(String nom, String idAllotjament, float metres, boolean connexioElectrica) {
-        llistaAllotjaments.add(new Parcela(nom, idAllotjament, metres, connexioElectrica));
+    public void afegirParcela(String nom, String idAllotjament, boolean estatAllotjament, String iluminacio, float mida, boolean connexioElectrica) {
+        llistaAllotjaments.add(new Parcela(nom, idAllotjament, estatAllotjament, iluminacio, mida, connexioElectrica));
     }
 
-    public void afegirBungalow(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
-        llistaAllotjaments.add(new Bungalow(nom, idAllotjament, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred));
+    public void afegirBungalow(String nom, String idAllotjament, boolean estatAllotjament, String iluminacio, float mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
+        llistaAllotjaments.add(new Bungalow(nom, idAllotjament, estatAllotjament, iluminacio, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred));
     }
 
     public void afegirBungalowPremium(String nom, String idAllotjament, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {

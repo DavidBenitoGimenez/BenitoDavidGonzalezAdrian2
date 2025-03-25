@@ -1,14 +1,12 @@
 package prog2.model;
 
 public abstract class Casa extends Allotjament{
-    private String mida;
     private int habitacions;
     private int placesPersones;
 
     // Constructor
-    public Casa(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones) {
-        super(nom_, idAllotjament_);
-        this.mida = mida;
+    public Casa(String nom_, String idAllotjament_, boolean estatAllotjament_, String iluminacio_, float mida_, int habitacions, int placesPersones) {
+        super(nom_, idAllotjament_, estatAllotjament_, iluminacio_, mida_);
         this.habitacions = habitacions;
         this.placesPersones = placesPersones;
     }

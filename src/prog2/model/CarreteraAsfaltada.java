@@ -2,9 +2,9 @@ package prog2.model;
 
 import java.util.ArrayList;
 
-public abstract class CarreteraAsfalt extends AccesAsfalt{
+public abstract class CarreteraAsfaltada extends AccesAsfalt{
     private double pesMaxim;
-    public CarreteraAsfalt(String nom, boolean accessibilitat, boolean estat, ArrayList<String> llistaAllotjaments, double metresQuadrats, double pesMaxim) {
+    public CarreteraAsfaltada(String nom, boolean accessibilitat, boolean estat, ArrayList<String> llistaAllotjaments, double metresQuadrats, double pesMaxim) {
         super(nom, accessibilitat, estat, llistaAllotjaments, metresQuadrats);
         this.pesMaxim = pesMaxim;
     }

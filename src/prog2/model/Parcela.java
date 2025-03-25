@@ -13,13 +13,9 @@ public class Parcela extends Allotjament {
     }
 
     // Getter
-    public float getMetres() {
-        return metres;
-    }
     public boolean isConnexioElectrica() {
         return connexioElectrica;
     }
-    public void setMetres(float metres) { this.metres = metres; }
     public void setConnexioElectrica(boolean connexioElectrica) { this.connexioElectrica = connexioElectrica; }
 
     // Metode

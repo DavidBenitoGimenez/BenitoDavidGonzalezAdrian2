@@ -3,11 +3,12 @@ package prog2.model;
 import java.util.ArrayList;
 
 public abstract class CamiTerra extends AccesTerra {
-    public CamiTerra(String nom, boolean accessibilitat, boolean estat, ArrayList<String> llistaAllotjaments, double longitud) {
-        super(nom, accessibilitat, estat, llistaAllotjaments, longitud);
+    public CamiTerra(String nom, boolean estat, double longitud) {
+        super(nom, false, estat, new ArrayList<>(), longitud);
+
     }
     @Override
-    public boolean isAccessiblitat(){
+    public boolean isAccessibilitat(){
         return false;
     }
 }
