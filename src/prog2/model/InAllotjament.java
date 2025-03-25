@@ -29,37 +29,5 @@ public interface InAllotjament {
      */
     void setId(String id);
 
-    /**
-     * Obté l'estada mínima segons la temporada.
-     * @param temp la temporada (ALTA o BAIXA).
-     * @return el valor de l'estada mínima per a la temporada indicada.
-     */
-    long getEstadaMinima(Temp temp);
-
-    /**
-     * Estableix l'estada mínima per a cada temporada.
-     * @param estadaMinimaALTA_ l'estada mínima en temporada alta.
-     * @param estadaMinimaBAIXA_ l'estada mínima en temporada baixa.
-     */
-    void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_);
-
-    /**
-     * Enumeració que representa les diferents temporades possibles.
-     */
-    public enum Temp {
-        ALTA,
-        BAIXA
-    }
-
-    /**
-     * Modifica l'estat de l'allotjament a No Operatiu i la il·luminació depenent de la incidència rebuda com a paràmetre
-     * @param in Objecte de tipus Incidencia.
-     *
-    public void tancarAllotjament(Incidencia in);
-    */
-
-    /**
-     * Modifica l'estat de l'allotjament a Operatiu i la il·luminació al 100%
-     */
-    public void obrirAllotjament();
+    void obrirAllotjament();
 }

@@ -1,16 +1,16 @@
 package prog2.model;
 
 import java.util.ArrayList;
-public abstract class CarreteraTerra extends AccesTerra{
-    private double amplada;
-    public CarreteraTerra(String nom, boolean accessibilitat, boolean estat, ArrayList<String> llistaAllotjaments, double longitud, double amplada){
-        super(nom, accessibilitat, estat, llistaAllotjaments, longitud);
+public class CarreteraTerra extends AccesTerra{
+    private float amplada;
+    public CarreteraTerra(String nom, boolean estat, float longitud, float amplada){
+        super(nom, estat, longitud);
         this.amplada = amplada;
     }
     public double getAmplada() {
         return amplada;
     }
-    public void setAmplada(double amplada) {
+    public void setAmplada(float amplada) {
         this.amplada = amplada;
     }
     @Override

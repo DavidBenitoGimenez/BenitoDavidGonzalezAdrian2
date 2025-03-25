@@ -2,12 +2,13 @@ package prog2.model;
 
 import java.util.ArrayList;
 
-public abstract class CamiAsfaltat extends AccesAsfalt {
-    public CamiAsfaltat(String nom, boolean accessibilitat, boolean estat, double metresQuadrats) {
-        super(nom,accessibilitat, estat, llistaAllotjaments, metresQuadrats);
+public class CamiAsfaltat extends AccesAsfalt {
+    public CamiAsfaltat(String nom, boolean accessibilitat, double metresQuadrats) {
+        super(nom, accessibilitat, true, metresQuadrats);
     }
+
     @Override
-    public boolean isAccessibilitat(){
+    public boolean isAccessibilitat() {
         return false;
     }
 }

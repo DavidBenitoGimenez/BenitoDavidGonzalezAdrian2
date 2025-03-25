@@ -1,6 +1,8 @@
 package prog2.model;
 
-public class MobilHome extends Casa {
+import java.io.Serializable;
+
+public class MobilHome extends Casa implements Serializable {
     private boolean terrassaBarbacoa;
 
     // Constructor
@@ -14,10 +16,5 @@ public class MobilHome extends Casa {
         return terrassaBarbacoa;
     }
 
-    // Metode
-    @Override
-    public boolean correcteFuncionament() {
-        return terrassaBarbacoa;
-    }
 }
 

@@ -19,10 +19,4 @@ public class Glamping extends Casa {
         return casaMascota;
     }
 
-    // Metodes
-    @Override
-    public boolean correcteFuncionament() {
-        // Un Glamping funciona correctamente si tiene casa para mascotas
-        return casaMascota;
-    }
 }

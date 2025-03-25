@@ -9,57 +9,26 @@ import java.util.Locale;
 
 public abstract class Camping implements InCamping {
     private String nom;
-    private ArrayList<Allotjament> llistaAllotjaments;
+    private LlistaAllotjaments llistaAllotjaments;
+    private LlistaAccessos llistaAccessos;
 
 
     // Constructor
     public Camping(String nom) {
         this.nom = nom;
-        this.llistaAllotjaments = new ArrayList<>();
-
+        this.llistaAllotjaments = new LlistaAllotjaments();
+        this.llistaAccessos = new LlistaAccessos(new ArrayList<>());
     }
 
     // Getters
     public String getNom() {
         return nom;
     }
-    public ArrayList<Allotjament> getLlistaAllotjaments() {
+    public LlistaAllotjaments getLlistaAllotjaments() {
         return llistaAllotjaments;
     }
-    public int getNumAllotjaments() {
-        return llistaAllotjaments.size();
-    }
 
-
-    public static InAllotjament.Temp getTemporada(LocalDate data){
-        int mes = data.getMonthValue();
-        int dia = data.getDayOfMonth();
-        if ((mes > 3 || (mes == 3 & dia > 20)) && (mes < 9 || (mes == 9 & dia < 21))) {
-            return InAllotjament.Temp.ALTA;
-        }
-        return InAllotjament.Temp.BAIXA;
-    }
-
-    // Métodes per agregar diferents tipus d'allotjaments
-    public void afegirParcela(String nom, String idAllotjament, boolean estatAllotjament, String iluminacio, float mida, boolean connexioElectrica) {
-        llistaAllotjaments.add(new Parcela(nom, idAllotjament, estatAllotjament, iluminacio, mida, connexioElectrica));
-    }
-
-    public void afegirBungalow(String nom, String idAllotjament, boolean estatAllotjament, String iluminacio, float mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
-        llistaAllotjaments.add(new Bungalow(nom, idAllotjament, estatAllotjament, iluminacio, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred));
-    }
-
-    public void afegirBungalowPremium(String nom, String idAllotjament, boolean estatAllotjament, String iluminacio, float mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
-        llistaAllotjaments.add(new BungalowPremium(nom, idAllotjament, estatAllotjament, iluminacio, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi));
-    }
-
-    public void afegirGlamping(String nom, String idAllotjament, boolean estatAllotjament, String iluminacio, float mida, int habitacions, int placesPersones, String material, boolean casaMascota) {
-        llistaAllotjaments.add(new Glamping(nom, idAllotjament, estatAllotjament, iluminacio, mida, habitacions, placesPersones, material, casaMascota));
-    }
-
-    public void afegirMobilHome(String nom, String idAllotjament, boolean estatAllotjament, String iluminacio, float mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
-        llistaAllotjaments.add(new MobilHome(nom, idAllotjament, estatAllotjament, iluminacio, mida, habitacions, placesPersones, terrassaBarbacoa));
-    }
+    public LlistaAccessos getLlistaAccessos() {return llistaAccessos;}
 
     public void afegirIncidencia(int numIncidencia, String tipus, String idAllotjament, String data) throws ExcepcioCamping{
         // recupera l'allotjament amb l'identificador donat, invoca el mètode per afegirIncidencia
@@ -179,7 +148,7 @@ public abstract class Camping implements InCamping {
         nom = "Bungallow Sud";
         idAllotjament = "ALL4";
         mida = 27f;
-        habitacions =2;
+        habitacions = 2;
         placesPersones = 6;
         placesParquing = 1;
         terrassa = true;

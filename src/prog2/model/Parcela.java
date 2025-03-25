@@ -1,12 +1,16 @@
 package prog2.model;
 
-public class Parcela extends Allotjament {
-    private boolean connexioElectrica;
+import java.io.Serializable;
 
-    // Constructor
+public class Parcela extends Allotjament implements Serializable {
+    private boolean connexioElectrica;
+    private float metres;
+
+    // Constructor ola caracola hola pisha
     public Parcela(String nom, String idAllotjament, boolean estatAllotjament, String iluminacio, float mida, boolean connexioElectrica) {
-        super(nom, idAllotjament, estatAllotjament, iluminacio, mida);
+        super(nom, idAllotjament, estatAllotjament, iluminacio);
         this.connexioElectrica = connexioElectrica;
+        this.metres = mida;
 
     }
 
@@ -15,10 +19,15 @@ public class Parcela extends Allotjament {
         return connexioElectrica;
     }
     public void setConnexioElectrica(boolean connexioElectrica) { this.connexioElectrica = connexioElectrica; }
-
-    // Metode
-    public boolean correcteFuncionament() {
-        // Una Parcela funciona correctamente si tiene conexión eléctrica
-        return connexioElectrica;
+    public float getMetres() {
+        return metres;
     }
+    public void setMetres(float metres) {
+        this.metres = metres;
+    }
+    @Override
+    public String toString() {
+        return super.toString() + "\n connexioElectrica = " + connexioElectrica + "\n metres = " + metres + "\n";
+    }
+
 }

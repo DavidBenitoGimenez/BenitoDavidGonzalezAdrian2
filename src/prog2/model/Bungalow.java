@@ -1,5 +1,8 @@
 package prog2.model;
 
+import java.io.Serializable;
+
+// Que es eso de serializable??
 public class Bungalow extends Casa {
     private int placesParquing;
     private boolean terrassa;
@@ -30,7 +33,8 @@ public class Bungalow extends Casa {
     }
 
     // Metodes
-    public boolean correcteFuncionament(){
-        return isAireFred() & isTv();
+    @Override
+    public String toString() {
+        return super.toString() + "Plaçes pàrquing " + placesParquing + "Terrassa " + terrassa + " Tv " + tv + " AireFred " + aireFred;
     }
 }

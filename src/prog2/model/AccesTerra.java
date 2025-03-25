@@ -3,16 +3,16 @@ package prog2.model;
 import java.util.ArrayList;
 
 public abstract class AccesTerra extends Acces {
-    private double longitud;
+    private float longitud;
 
-    public AccesTerra(String nom, boolean accessibilitat, boolean estat, ArrayList<String> llistaAllotjaments, double longitud){
-        super(nom, accessibilitat, estat, llistaAllotjaments);
+    public AccesTerra(String nom, boolean estat, float longitud){
+        super(nom, false, estat);
         this.longitud = longitud;
     }
     public double getLongitud(){
         return longitud;
     }
-    public void setLongitud(double longitud){
+    public void setLongitud(float longitud){
         this.longitud = longitud;
     }
     @Override
