@@ -14,17 +14,17 @@ public class Menu<TEnum> {
      /**
      * Llista de les opcions
      */
-    TEnum[] _llistaOpcions=null;
-
+    TEnum[] _llistaOpcions;
     /**
      * Títol del menú
      */
-    String _titol="";
+    String _titol = "Menu Camping del Mar";
 
     /**
      * Llista amb els missatges associats a les accions
      */
-    String[] _descripcions=null;
+    String[] _descripcions = {"Llistar la informació de tots els allotjaments", "Llistar la informació dels allotjaments operatius"
+    , "Llistar la informació dels allotjaments no operatius", "Llistar la informació dels accessos oberts", "Llistar la informació dels accessos tancats"};
 
     /**
      * Constructor per defecte. Se li ha de passar un enumeració de les opcions.

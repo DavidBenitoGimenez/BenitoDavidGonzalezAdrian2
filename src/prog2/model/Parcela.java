@@ -1,13 +1,11 @@
 package prog2.model;
 
 public class Parcela extends Allotjament {
-    private float metres;
     private boolean connexioElectrica;
 
     // Constructor
-    public Parcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica) {
-        super(nom_, idAllotjament_); // Ejemplo de estada mínima
-        this.metres = metres;
+    public Parcela(String nom, String idAllotjament, boolean estatAllotjament, String iluminacio, float mida, boolean connexioElectrica) {
+        super(nom, idAllotjament, estatAllotjament, iluminacio, mida);
         this.connexioElectrica = connexioElectrica;
 
     }
@@ -19,7 +17,6 @@ public class Parcela extends Allotjament {
     public void setConnexioElectrica(boolean connexioElectrica) { this.connexioElectrica = connexioElectrica; }
 
     // Metode
-    @Override
     public boolean correcteFuncionament() {
         // Una Parcela funciona correctamente si tiene conexión eléctrica
         return connexioElectrica;
