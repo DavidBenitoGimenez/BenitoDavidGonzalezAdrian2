@@ -1,76 +1,81 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
-
 import java.util.ArrayList;
 
+/**
+ * Classe que gestiona una llista d'incidències del càmping
+ */
 public class LlistaIncidencies implements InLlistaIncidencies {
     private ArrayList<Incidencia> llistaIncidencies;
 
+    /**
+     * Constructor de la classe LlistaIncidencies
+     * @param llistaIncidencies Llista d'incidències inicial
+     */
     public LlistaIncidencies(ArrayList<Incidencia> llistaIncidencies) {
-        this.llistaIncidencies  = llistaIncidencies;
+        this.llistaIncidencies = llistaIncidencies;
     }
 
     /**
-     * Aquest mètode crea una incidència amb la informació passada com a paràmetres
-     * (número d'identificador, tipus, l'allotjament on s'ha produït i la data) i l'afegeix a la llista.
-     * A més, s'ha de comprovar que aquest allotjament no té ja una incidència si ja té una incidència s'ha de llançar una excepció.
-     * Una vegada creada la incidència s'ha de tancar (no operatiu) l'allotjament corresponent.
-     * @param num Número d'identificació de la incidència.
-     * @param tipus Aquest String permet crear el enum TipusIncidencia
-     * @param allotjament Allotjament on es produeix la incidència
-     * @param data Data quan es produeix la incidència.
-     * @throws ExcepcioCamping Per comprovar i avisar si l'allotjament ja té una incidència o si el tipus d’incidència que es vol afegir no existeix.
+     * Afegeix una incidència a la llista
+     * @param num Número d'identificació de la incidència
+     * @param tipus Tipus d'incidència
+     * @param allotjament Allotjament afectat
+     * @param data Data de l'incidència
+     * @throws ExcepcioCamping Si la incidència ja existeix o el tipus no és vàlid
      */
     public void afegirIncidencia(int num, String tipus, Allotjament allotjament, String data) throws ExcepcioCamping {
         try {
             Incidencia in = new Incidencia(num, tipus, allotjament, data);
             for (Incidencia incidencia : llistaIncidencies) {
                 if (in.getNumeroIncidencia() == (incidencia.getNumeroIncidencia())) {
-                    throw new ExcepcioCamping("La incidencia ja existeix ");
+                    throw new ExcepcioCamping("La incidencia ja existeix");
                 }
             }
             llistaIncidencies.add(in);
             allotjament.setEstatAllotjament(false);
-            if (tipus.equals("Reparacio")){
+
+            if (tipus.equals("Reparacio")) {
                 allotjament.setIluminacio("100%");
             }
             else if (tipus.equals("Neteja")) {
                 allotjament.setIluminacio("50%");
             }
-            else if (tipus.equals("Tancament")){
+            else if (tipus.equals("Tancament")) {
                 allotjament.setIluminacio("0%");
             }
             else {
                 throw new ExcepcioCamping("No existeix aquesta incidencia");
             }
-            System.out.println("S'ha afegit la nova incidencia correctament i s'ha actualitzat la iluminació a " + allotjament.getIluminacio() + " de l'allotjament: " + allotjament.getId());
 
+            System.out.println("S'ha afegit la nova incidencia correctament i s'ha actualitzat la iluminació a " +
+                    allotjament.getIluminacio() + " de l'allotjament: " + allotjament.getId());
         } catch (Exception e) {
-            throw new ExcepcioCamping("Error en afegir incidencia " + e.getMessage());
+            throw new ExcepcioCamping("Error en afegir incidencia: " + e.getMessage());
         }
     }
+
     /**
-     * Aquest mètode elimina una incidència de la llista i actualitza l'estat de l'allotjament mitjançant el mètode obrirAllotjament de la classe Allotjament.
-     * @param in Objecte de tipus Incidència
-     * @throws ExcepcioCamping
+     * Elimina una incidència de la llista
+     * @param in Incidència a eliminar
+     * @throws ExcepcioCamping Si hi ha un error en eliminar l'incidència
      */
     public void eliminarIncidencia(Incidencia in) throws ExcepcioCamping {
         try {
             llistaIncidencies.remove(in);
             in.getAllotjament().obrirAllotjament();
         } catch (Exception e) {
-            throw new ExcepcioCamping("Error en eliminar incidencia " + e.getMessage());
+            throw new ExcepcioCamping("Error en eliminar incidencia: " + e.getMessage());
         }
     }
 
     /**
-     * Itera sobre la llista d'incidències i retorna un String amb la informació de totes les incidències.
-     * En cas que no hi hagi cap incidència llança una excepció.
-     * @return String
-     * @throws ExcepcioCamping
+     * Llista totes les incidències
+     * @return String amb la informació de les incidències
+     * @throws ExcepcioCamping Si no hi ha incidències registrades
      */
-    public String llistarIncidencies() throws ExcepcioCamping{
+    public String llistarIncidencies() throws ExcepcioCamping {
         try {
             if (llistaIncidencies.isEmpty()) {
                 throw new ExcepcioCamping("No hi ha incidències registrades");
@@ -79,22 +84,21 @@ public class LlistaIncidencies implements InLlistaIncidencies {
             for (Incidencia incidencia : llistaIncidencies) {
                 incidencies.append("Numero: " + incidencia.getNumeroIncidencia() +
                         ", Allotjament: " + incidencia.getAllotjament().getNom() +
-                        ", Iluminació de l'allotjament: " + incidencia.getAllotjament().getIluminacio() +
+                        ", Iluminació: " + incidencia.getAllotjament().getIluminacio() +
                         ", Data: " + incidencia.getDataIncidencia() +
                         ", Tipus: " + incidencia.getTipusIncidencia() + "\n");
             }
             return incidencies.toString();
         } catch (Exception e) {
-            throw new ExcepcioCamping("Error en llistar incidencies " + e.getMessage());
+            throw new ExcepcioCamping("Error en llistar incidencies: " + e.getMessage());
         }
     }
 
     /**
-     * Busca la incidència amb el número rebut per paràmetre i la retorna.
-     * En cas que no existeixi llança una excepció.
-     * @param num Número d'identificació de la incidència.
-     * @return Objecte de tipus Incidència
-     * @throws ExcepcioCamping Aquest mètode llança una excepció si no existeix cap incidència amb el número passat per paràmetre.
+     * Obté una incidència pel seu número
+     * @param num Número d'incidència
+     * @return L'incidència trobada
+     * @throws ExcepcioCamping Si no es troba l'incidència
      */
     public Incidencia getIncidencia(int num) throws ExcepcioCamping {
         try {
@@ -103,9 +107,9 @@ public class LlistaIncidencies implements InLlistaIncidencies {
                     return incidencia;
                 }
             }
+            throw new ExcepcioCamping("No s'ha trobat la incidencia amb número " + num);
         } catch (ExcepcioCamping e) {
-            throw new ExcepcioCamping("Error en trobar la incidencia " + e.getMessage());
+            throw new ExcepcioCamping("Error en trobar la incidencia: " + e.getMessage());
         }
-        return null;
     }
 }

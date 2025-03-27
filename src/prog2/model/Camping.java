@@ -108,6 +108,7 @@ public class Camping implements InCamping, Serializable {
      * @return La quantitat de metres quadrats d'asfalt. (float)
      */
     public float calculaMetresQuadratsAsfalt() {return llistaAccessos.calculaMetresQuadratsAsfalt();}
+
     // Mètodes accesos menú
     public String llistarAccesosOberts() {return llistaAccessos.llistarAccessos(true);}
     public String llistarAccesosTancats() {return llistaAccessos.llistarAccessos(false);}

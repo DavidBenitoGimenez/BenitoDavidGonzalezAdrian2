@@ -1,11 +1,13 @@
 package prog2.vista;
 
 import prog2.model.Camping;
-
 import java.util.Scanner;
 
+/**
+ * Classe que gestiona la interfície d'usuari del càmping
+ */
 public class VistaCamping {
-     private enum OpcionesMenu {
+    private enum OpcionesMenu {
         LLISTAR_ALLOTJAMENTS,
         LLISTAR_ALLOTJAMENTS_OPERATIUS,
         LLISTAR_ALLOTJAMENTS_NO_OPERATIUS,
@@ -20,11 +22,16 @@ public class VistaCamping {
         RECUPERAR_CAMPING,
         SORTIR
     }
+
     private String nomCamping;
     private Camping camping;
     private Menu<OpcionesMenu> menuPrincipal;
     private Scanner scanner;
 
+    /**
+     * Constructor de la classe VistaCamping
+     * @param nomCamping Nom del càmping
+     */
     public VistaCamping(String nomCamping) {
         this.nomCamping = nomCamping;
         this.camping = new Camping("Green");
@@ -52,9 +59,25 @@ public class VistaCamping {
         this.menuPrincipal.setDescripcions(descripcions);
     }
 
-    public String getNomCamping() { return nomCamping; }
-    public void setNomCamping(String nomCamping) { this.nomCamping = nomCamping; }
+    /**
+     * Obté el nom del càmping
+     * @return Nom del càmping
+     */
+    public String getNomCamping() {
+        return nomCamping;
+    }
 
+    /**
+     * Estableix el nom del càmping
+     * @param nomCamping Nou nom del càmping
+     */
+    public void setNomCamping(String nomCamping) {
+        this.nomCamping = nomCamping;
+    }
+
+    /**
+     * Gestiona el menú principal del càmping
+     */
     public void gestioCamping() {
         OpcionesMenu opcio;
         do {
@@ -64,6 +87,10 @@ public class VistaCamping {
         } while (opcio != OpcionesMenu.SORTIR);
     }
 
+    /**
+     * Processa l'opció seleccionada del menú
+     * @param opcio Opció seleccionada
+     */
     private void procesarOpcio(OpcionesMenu opcio) {
         try {
             switch (opcio) {
@@ -111,17 +138,11 @@ public class VistaCamping {
                     break;
 
                 case GUARDAR_CAMPING:
-                    System.out.print("Introdueix el nom del fitxer per guardar: ");
-                    String fitxerGuardar = scanner.nextLine();
-                    camping.save(fitxerGuardar);
-                    System.out.println("Camping guardat correctament.");
+                    guardarCamping();
                     break;
 
                 case RECUPERAR_CAMPING:
-                    System.out.print("Introdueix el nom del fitxer per carregar: ");
-                    String fitxerCarregar = scanner.nextLine();
-                    camping = Camping.carregar(fitxerCarregar);
-                    System.out.println("Camping carregat correctament.");
+                    recuperarCamping();
                     break;
 
                 case SORTIR:
@@ -135,10 +156,14 @@ public class VistaCamping {
         }
     }
 
+    /**
+     * Afegeix una nova incidència
+     * @throws ExcepcioCamping Si hi ha un error en afegir la incidència
+     */
     private void afegirIncidencia() throws ExcepcioCamping {
         System.out.print("Número d'incidència: ");
         int num = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); // Netejar buffer
 
         System.out.print("Tipus d'incidència (Reparacio/Neteja/Tancament): ");
         String tipus = scanner.nextLine();
@@ -153,13 +178,39 @@ public class VistaCamping {
         System.out.println("Incidència afegida correctament.");
     }
 
+    /**
+     * Elimina una incidència existent
+     * @throws ExcepcioCamping Si hi ha un error en eliminar la incidència
+     */
     private void eliminarIncidencia() throws ExcepcioCamping {
         System.out.println(camping.llistarIncidencies());
         System.out.print("Número d'incidència a eliminar: ");
         int num = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); // Netejar buffer
 
         camping.eliminarIncidencia(num);
         System.out.println("Incidència eliminada correctament.");
+    }
+
+    /**
+     * Guarda l'estat del càmping en un fitxer
+     * @throws ExcepcioCamping Si hi ha un error en guardar el càmping
+     */
+    private void guardarCamping() throws ExcepcioCamping {
+        System.out.print("Introdueix el nom del fitxer per guardar: ");
+        String fitxerGuardar = scanner.nextLine();
+        camping.save(fitxerGuardar);
+        System.out.println("Camping guardat correctament.");
+    }
+
+    /**
+     * Recupera l'estat del càmping des d'un fitxer
+     * @throws ExcepcioCamping Si hi ha un error en carregar el càmping
+     */
+    private void recuperarCamping() throws ExcepcioCamping {
+        System.out.print("Introdueix el nom del fitxer per carregar: ");
+        String fitxerCarregar = scanner.nextLine();
+        camping = Camping.carregar(fitxerCarregar);
+        System.out.println("Camping carregat correctament.");
     }
 }

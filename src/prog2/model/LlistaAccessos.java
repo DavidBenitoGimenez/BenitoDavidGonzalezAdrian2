@@ -5,13 +5,25 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Classe que gestiona una llista d'accessos al càmping
+ */
 public class LlistaAccessos implements InLlistaAccessos {
     private final ArrayList<Acces> llistaAccessos;
 
+    /**
+     * Constructor de la classe LlistaAccessos
+     * @param llistaAccessos Llista d'accessos inicial
+     */
     public LlistaAccessos(ArrayList<Acces> llistaAccessos) {
         this.llistaAccessos = llistaAccessos;
     }
 
+    /**
+     * Afegeix un accés a la llista
+     * @param acc Accés a afegir
+     * @throws ExcepcioCamping Si hi ha un error en afegir l'accés
+     */
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
         try {
             llistaAccessos.add(acc);
@@ -20,10 +32,19 @@ public class LlistaAccessos implements InLlistaAccessos {
         }
     }
 
+    /**
+     * Buida la llista d'accessos
+     */
     public void buidar() {
         llistaAccessos.clear();
     }
 
+    /**
+     * Llista els accessos segons l'estat
+     * @param estat Estat dels accessos a llistar
+     * @return String amb la llista d'accessos
+     * @throws ExcepcioCamping Si no hi ha accessos disponibles
+     */
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
         try {
             StringBuffer solucio = new StringBuffer();
@@ -44,8 +65,10 @@ public class LlistaAccessos implements InLlistaAccessos {
         }
     }
 
-
-    // Revisar
+    /**
+     * Actualitza l'estat dels accessos segons l'estat dels allotjaments
+     * @throws ExcepcioCamping Si hi ha un error en actualitzar els estats
+     */
     public void actualitzaEstatAccessos() throws ExcepcioCamping {
         try {
             for (Acces acc : llistaAccessos) {
@@ -61,9 +84,13 @@ public class LlistaAccessos implements InLlistaAccessos {
         } catch (ExcepcioCamping e) {
             throw new ExcepcioCamping("Error en actualitzar els estat dels accessos: " + e.getMessage());
         }
-
     }
 
+    /**
+     * Calcula el nombre d'accessos accessibles
+     * @return Nombre d'accessos accessibles
+     * @throws ExcepcioCamping Si hi ha un error en el càlcul
+     */
     public int calculaAccessosAccessibles() throws ExcepcioCamping {
         try {
             int accessos = 0;
@@ -78,6 +105,11 @@ public class LlistaAccessos implements InLlistaAccessos {
         }
     }
 
+    /**
+     * Calcula els metres quadrats d'asfalt totals
+     * @return Metres quadrats d'asfalt
+     * @throws ExcepcioCamping Si hi ha un error en el càlcul
+     */
     public float calculaMetresQuadratsAsfalt() throws ExcepcioCamping {
         try {
             float metresQuadrats = 0;
