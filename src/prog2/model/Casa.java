@@ -1,10 +1,5 @@
 package prog2.model;
 
-import java.io.Serializable;
-
-/**
- * Classe abstracta que representa una casa dins del càmping
- */
 public abstract class Casa extends Allotjament {
     float mida;
     private int habitacions;

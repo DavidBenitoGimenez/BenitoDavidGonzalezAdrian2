@@ -3,9 +3,6 @@ package prog2.vista;
 import prog2.model.Camping;
 import java.util.Scanner;
 
-/**
- * Classe que gestiona la interfície d'usuari del càmping
- */
 public class VistaCamping {
     private enum OpcionesMenu {
         LLISTAR_ALLOTJAMENTS,
@@ -210,7 +207,7 @@ public class VistaCamping {
     private void recuperarCamping() throws ExcepcioCamping {
         System.out.print("Introdueix el nom del fitxer per carregar: ");
         String fitxerCarregar = scanner.nextLine();
-        camping = Camping.carregar(fitxerCarregar);
+        camping = Camping.load(fitxerCarregar);
         System.out.println("Camping carregat correctament.");
     }
 }

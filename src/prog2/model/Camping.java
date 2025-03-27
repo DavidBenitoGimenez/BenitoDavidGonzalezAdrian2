@@ -137,7 +137,7 @@ public class Camping implements InCamping, Serializable {
      * @return Una instància de la classe Camping carregada des del fitxer.
      * @throws ExcepcioCamping
      */
-    public static Camping carregar(String camiOrigen) throws ExcepcioCamping {
+    public static Camping load(String camiOrigen) throws ExcepcioCamping {
         try {
             FileInputStream fin = new FileInputStream(camiOrigen);
             ObjectInputStream ois = new ObjectInputStream(fin);
@@ -145,7 +145,6 @@ public class Camping implements InCamping, Serializable {
             ois.close();
             fin.close();
             return campingCarregat;
-
         }
         catch (FileNotFoundException e) {
             throw new ExcepcioCamping("No s'ha trobat l'arxiu: "+e.getMessage());
@@ -317,7 +316,5 @@ public class Camping implements InCamping, Serializable {
         Acc10.afegirAllotjament(ALL2);
         Acc11.afegirAllotjament(ALL6);
         Acc12.afegirAllotjament(ALL6);
-
-
     }
 }

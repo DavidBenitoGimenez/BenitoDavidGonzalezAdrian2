@@ -3,9 +3,6 @@ package prog2.model;
 import prog2.vista.ExcepcioCamping;
 import java.util.ArrayList;
 
-/**
- * Classe que gestiona una llista d'incidències del càmping
- */
 public class LlistaIncidencies implements InLlistaIncidencies {
     private ArrayList<Incidencia> llistaIncidencies;
 

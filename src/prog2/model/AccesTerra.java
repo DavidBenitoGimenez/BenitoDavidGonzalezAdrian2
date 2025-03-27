@@ -1,5 +1,4 @@
 package prog2.model;
-import java.util.ArrayList;
 
 public abstract class AccesTerra extends Acces {
     private float longitud;
@@ -35,6 +34,4 @@ public abstract class AccesTerra extends Acces {
     public String toString(){
         return super.toString() + "Longitud = " + longitud;
     }
-
-    public abstract boolean isAccessiblitat();
 }

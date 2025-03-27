@@ -1,8 +1,5 @@
 package prog2.model;
 
-/**
- * Interfície que defineix les operacions bàsiques per als allotjaments.
- */
 public interface InAllotjament {
 
     /**

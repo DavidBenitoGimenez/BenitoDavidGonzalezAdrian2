@@ -1,10 +1,5 @@
 package prog2.model;
 
-import java.util.ArrayList;
-
-/**
- * Classe que representa una carretera asfaltada dins del càmping
- */
 public class CarreteraAsfaltada extends AccesAsfalt {
     private double pesMaxim;
 

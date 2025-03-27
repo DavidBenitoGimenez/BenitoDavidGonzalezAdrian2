@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Classe que gestiona una llista d'accessos al càmping
- */
 public class LlistaAccessos implements InLlistaAccessos {
     private final ArrayList<Acces> llistaAccessos;
 

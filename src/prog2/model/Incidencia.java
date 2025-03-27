@@ -2,11 +2,8 @@ package prog2.model;
 
 import java.io.Serializable;
 
-/**
- * Classe que representa una incidència al càmping
- */
 public class Incidencia implements Serializable {
-    public static enum TipusIncidencia {
+    public enum TipusIncidencia {
         REPARACIO, NETEJA, TANCAMENT
     };
 

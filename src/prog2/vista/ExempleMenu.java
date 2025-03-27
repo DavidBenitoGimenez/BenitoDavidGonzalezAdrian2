@@ -2,10 +2,6 @@ package prog2.vista;
 
 import java.util.Scanner;
 
-/**
- * Exemple d'utilització de la classe Menu. 
- * 
- */
 public class ExempleMenu {
 
     // Declarem les opcions per a referir-se a les opcions del menú.

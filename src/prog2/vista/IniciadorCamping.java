@@ -2,7 +2,7 @@ package prog2.vista;
 
 /**
  *
- * @author lauraigual
+ * @author Adrián González, David Benito
  */
 public class IniciadorCamping {
     

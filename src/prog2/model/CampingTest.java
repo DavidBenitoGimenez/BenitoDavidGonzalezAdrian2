@@ -3,8 +3,6 @@ package prog2.model;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import prog2.vista.ExcepcioCamping;
-import java.io.File;
-import java.util.ArrayList;
 
 class CampingTest {
 

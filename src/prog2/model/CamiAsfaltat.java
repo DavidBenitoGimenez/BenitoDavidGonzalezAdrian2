@@ -1,10 +1,5 @@
 package prog2.model;
 
-import java.util.ArrayList;
-
-/**
- * Classe que representa un camí asfaltat dins del càmping
- */
 public class CamiAsfaltat extends AccesAsfalt {
     /**
      * Constructor del camí asfaltat

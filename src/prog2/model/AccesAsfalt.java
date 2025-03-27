@@ -1,5 +1,4 @@
 package prog2.model;
-import java.util.ArrayList;
 
 public abstract class AccesAsfalt extends Acces{
     private double metresQuadrats;

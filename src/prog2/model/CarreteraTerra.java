@@ -45,13 +45,4 @@ public class CarreteraTerra extends AccesTerra {
     public String toString() {
         return super.toString() + " Amplada = " + amplada;
     }
-
-    /**
-     * Comprova l'accessibilitat de la carretera
-     * @return Sempre retorna true (accessible)
-     */
-    @Override
-    public boolean isAccessiblitat() {
-        return true;
-    }
 }

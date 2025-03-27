@@ -1,10 +1,5 @@
 package prog2.model;
 
-import java.util.ArrayList;
-
-/**
- * Classe que representa un camí de terra dins del càmping
- */
 public class CamiTerra extends AccesTerra {
     /**
      * Constructor del camí de terra
@@ -14,14 +9,5 @@ public class CamiTerra extends AccesTerra {
      */
     public CamiTerra(String nom, boolean estat, float longitud) {
         super(nom, estat, longitud);
-    }
-
-    /**
-     * Comprova l'accessibilitat del camí
-     * @return Sempre retorna false (no accessible)
-     */
-    @Override
-    public boolean isAccessiblitat() {
-        return false;
     }
 }
