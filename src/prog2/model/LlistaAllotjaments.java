@@ -20,8 +20,9 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
 
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
         StringBuffer solucio = new StringBuffer();
+        boolean operatiu = operatiu(estat);
         for (Allotjament allotjament : LlistaAllotjament) {
-            if(allotjament.getEstatAllotjament() == estat) {
+            if(allotjament.getEstatAllotjament() == operatiu) {
                 solucio.append("Allotjament " + allotjament.getId())
                         .append(" Amb ID: " + allotjament.getId())
                         .append(" Amb estat: " + allotjament.getEstatAllotjament())
@@ -53,7 +54,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
 
     public boolean containsAllotjamentOperatiu() {
         for (Allotjament allotjament : LlistaAllotjament) {
-            if (allotjament.getEstatAllotjament().equals("Operatiu")) {
+            if (allotjament.getEstatAllotjament()) {
                 return true;
             }
         }
@@ -75,5 +76,17 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
 
     public void add(Allotjament allotjament) {
         LlistaAllotjament.add(allotjament);
+    }
+
+    private boolean operatiu(String estat) throws ExcepcioCamping {
+        if (estat.equals("Obert")) {
+            return true;
+        }
+        else if (estat.equals("Tancat")) {
+            return false;
+        }
+        else {
+            throw new ExcepcioCamping("Estat no existeix " + estat);
+        }
     }
 }

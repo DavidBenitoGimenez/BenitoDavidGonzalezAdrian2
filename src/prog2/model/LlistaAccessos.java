@@ -30,11 +30,12 @@ public class LlistaAccessos implements InLlistaAccessos {
             for (Acces acc : llistaAccessos) {
                 if (acc.isEstat() == estat) {
                     solucio.append("Nom " + acc.getNom())
+                            .append(" Estat " + acc.isEstat())
                             .append(" Accessible: " + acc.isAccessibilitat())
                             .append("\n");
                 }
             }
-            if(solucio.isEmpty()) {
+            if (solucio.isEmpty()) {
                 throw new ExcepcioCamping("No hi ha accessos disponibles");
             }
             return solucio.toString();
@@ -46,6 +47,20 @@ public class LlistaAccessos implements InLlistaAccessos {
 
     // Revisar
     public void actualitzaEstatAccessos() throws ExcepcioCamping {
+        try {
+            for (Acces acc : llistaAccessos) {
+                acc.tancarAcces();
+            }
+            for (Acces acc : llistaAccessos) {
+                for (Allotjament allotjament : acc.getLlistaAllotjaments()) {
+                    if (allotjament.getEstatAllotjament()) {
+                        acc.obrirAcces();
+                    }
+                }
+            }
+        } catch (ExcepcioCamping e) {
+            throw new ExcepcioCamping("Error en actualitzar els estat dels accessos: " + e.getMessage());
+        }
 
     }
 

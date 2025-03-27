@@ -1,13 +1,15 @@
 package prog2.model;
 
-public abstract class Allotjament implements InAllotjament {
+import java.io.Serializable;
+
+public abstract class Allotjament implements InAllotjament, Serializable {
     private String nom_;
     private String idAllotjament_;
-    private String estatAllotjament;
+    private boolean estatAllotjament;
     private String iluminacio;
 
     // Constructor
-    public Allotjament(String nom, String id, String estatAllotjament, String iluminacio) {
+    public Allotjament(String nom, String id, boolean estatAllotjament, String iluminacio) {
         this.nom_ = nom;
         this.idAllotjament_ = id;
         this.estatAllotjament = estatAllotjament;
@@ -29,10 +31,10 @@ public abstract class Allotjament implements InAllotjament {
     public void setId(String idAllotjament) {
         this.idAllotjament_ = idAllotjament;
     }
-    public String getEstatAllotjament() {
+    public boolean getEstatAllotjament() {
         return estatAllotjament;
     }
-    public void setEstatAllotjament(String estatAllotjament) {
+    public void setEstatAllotjament(boolean estatAllotjament) {
         this.estatAllotjament = estatAllotjament;
     }
     public String getIluminacio() {
@@ -46,9 +48,9 @@ public abstract class Allotjament implements InAllotjament {
     // Métode toString
     @Override
     public String toString() {
-        return "Nom = " + nom_ + ", Id = " + idAllotjament_ + "Estat allotjament: " + estatAllotjament + ", Iluminacio = " + iluminacio;    }
+        return "Nom = " + nom_ + ", Id = " + idAllotjament_ + ", Estat allotjament: " + estatAllotjament + ", Iluminacio = " + iluminacio;    }
     public void obrirAllotjament(){
-        estatAllotjament = "Operatiu";
+        estatAllotjament = true;
         iluminacio = "100%";
     }
 }

@@ -58,10 +58,14 @@ public class Camping implements InCamping, Serializable {
      * @throws ExcepcioCamping
      */
     public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
-        try {
-            return llistaAccessos.llistarAccessos(Boolean.parseBoolean(infoEstat));
-        } catch (ExcepcioCamping e) {
-            throw new ExcepcioCamping("Error en llistar accessos" + e.getMessage());
+        if (infoEstat.equals("Obert")) {
+            return llistaAccessos.llistarAccessos(true);
+        }
+        else if (infoEstat.equals("Tancat")) {
+            return llistaAccessos.llistarAccessos(false);
+        }
+        else {
+            throw new ExcepcioCamping("Estat no existeix " + infoEstat);
         }
     }
 

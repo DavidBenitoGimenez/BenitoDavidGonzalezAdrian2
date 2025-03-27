@@ -72,11 +72,11 @@ public class VistaCamping {
                     break;
 
                 case LLISTAR_ALLOTJAMENTS_OPERATIUS:
-                    System.out.println(camping.llistarAllotjaments("Operatiu"));
+                    System.out.println(camping.llistarAllotjaments("Obert"));
                     break;
 
                 case LLISTAR_ALLOTJAMENTS_NO_OPERATIUS:
-                    System.out.println(camping.llistarAllotjaments("No operatiu"));
+                    System.out.println(camping.llistarAllotjaments("Tancat"));
                     break;
 
                 case LLISTAR_ACCESSOS_OBERTS:

@@ -12,7 +12,7 @@
             this.nom = nom;
             this.accesibilitat = accesibilitat;
             this.estat = estat;
-            this.LlistaAllotjaments = LlistaAllotjaments;
+            this.LlistaAllotjaments = new ArrayList<>();
         }
 
         public String getNom() {

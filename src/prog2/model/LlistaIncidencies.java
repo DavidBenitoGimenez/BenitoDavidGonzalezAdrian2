@@ -26,17 +26,30 @@ public class LlistaIncidencies implements InLlistaIncidencies {
         try {
             Incidencia in = new Incidencia(num, tipus, allotjament, data);
             for (Incidencia incidencia : llistaIncidencies) {
-                if (in.equals(incidencia)) {
+                if (in.getNumeroIncidencia() == (incidencia.getNumeroIncidencia())) {
                     throw new ExcepcioCamping("La incidencia ja existeix ");
                 }
             }
             llistaIncidencies.add(in);
-            allotjament.setEstatAllotjament("No operatiu");
+            allotjament.setEstatAllotjament(false);
+            if (tipus.equals("Reparacio")){
+                allotjament.setIluminacio("100%");
+            }
+            else if (tipus.equals("Neteja")) {
+                allotjament.setIluminacio("50%");
+            }
+            else if (tipus.equals("Tancament")){
+                allotjament.setIluminacio("0%");
+            }
+            else {
+                throw new ExcepcioCamping("No existeix aquesta incidencia");
+            }
+            System.out.println("S'ha afegit la nova incidencia correctament i s'ha actualitzat la iluminació a " + allotjament.getIluminacio() + " de l'allotjament: " + allotjament.getId());
+
         } catch (Exception e) {
             throw new ExcepcioCamping("Error en afegir incidencia " + e.getMessage());
         }
     }
-    // voy a revisar el de actualizar accessos que hay que llamarlo en este metodo para cuando se añada la incidencia OWO
     /**
      * Aquest mètode elimina una incidència de la llista i actualitza l'estat de l'allotjament mitjançant el mètode obrirAllotjament de la classe Allotjament.
      * @param in Objecte de tipus Incidència
@@ -65,7 +78,8 @@ public class LlistaIncidencies implements InLlistaIncidencies {
             StringBuilder incidencies = new StringBuilder();
             for (Incidencia incidencia : llistaIncidencies) {
                 incidencies.append("Numero: " + incidencia.getNumeroIncidencia() +
-                        ", Allotjament: " + incidencia.getAllotjament() +
+                        ", Allotjament: " + incidencia.getAllotjament().getNom() +
+                        ", Iluminació de l'allotjament: " + incidencia.getAllotjament().getIluminacio() +
                         ", Data: " + incidencia.getDataIncidencia() +
                         ", Tipus: " + incidencia.getTipusIncidencia() + "\n");
             }
