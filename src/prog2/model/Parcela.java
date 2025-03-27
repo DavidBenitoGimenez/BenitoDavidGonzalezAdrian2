@@ -25,9 +25,4 @@ public class Parcela extends Allotjament implements Serializable {
     public void setMetres(float metres) {
         this.metres = metres;
     }
-    @Override
-    public String toString() {
-        return super.toString() + "\n connexioElectrica = " + connexioElectrica + "\n metres = " + metres + "\n";
-    }
-
 }

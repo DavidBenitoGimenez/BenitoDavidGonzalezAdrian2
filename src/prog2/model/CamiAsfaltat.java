@@ -15,13 +15,4 @@ public class CamiAsfaltat extends AccesAsfalt {
     public CamiAsfaltat(String nom, boolean accessibilitat, double metresQuadrats) {
         super(nom, accessibilitat, true, metresQuadrats);
     }
-
-    /**
-     * Comprova l'accessibilitat del camí
-     * @return Sempre retorna false (no accessible)
-     */
-    @Override
-    public boolean isAccessibilitat() {
-        return false;
-    }
 }

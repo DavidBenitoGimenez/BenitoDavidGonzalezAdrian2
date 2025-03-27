@@ -34,16 +34,8 @@ public class Incidencia implements Serializable {
      * @return Nivell d'il·luminació
      */
     public String getIluminacioAllotjament(){
-        if (TipusIncidencia.REPARACIO.equals(tipusIncidencia)){
-            return "100%";
-        }
-        else if(TipusIncidencia.NETEJA.equals(tipusIncidencia)){
-            return "50%";
-        }
-        else if(TipusIncidencia.TANCAMENT.equals(tipusIncidencia)){
-            return "0%";
-        }
-        return "";
+        allotjament.setIluminacio(iluminacio(tipusIncidencia));
+        return allotjament.getIluminacio();
     }
 
     /**
@@ -120,6 +112,19 @@ public class Incidencia implements Serializable {
                 " - Allotjament de la incidencia: " + allotjament +
                 " - Tipus de la incidencia: " + tipusIncidencia +
                 " - Data de la incidencia: " + dataIncidencia +
-                " - Iluminacio actual de l'allotjament: " + getIluminacioAllotjament();
+                " - Iluminacio actual de l'allotjament: " + allotjament.getIluminacio();
+    }
+
+    public String iluminacio(String tipusIncidencia){
+        if (tipusIncidencia.equals("REPARACIO")){
+            return "100%";
+        }
+        else if(tipusIncidencia.equals("NETEJA")){
+            return "50%";
+        }
+        else if(tipusIncidencia.equals("TANCAMENT")){
+            return "0%";
+        }
+        return null;
     }
 }

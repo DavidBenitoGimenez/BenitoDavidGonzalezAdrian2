@@ -48,9 +48,6 @@ public class LlistaIncidencies implements InLlistaIncidencies {
             else {
                 throw new ExcepcioCamping("No existeix aquesta incidencia");
             }
-
-            System.out.println("S'ha afegit la nova incidencia correctament i s'ha actualitzat la iluminació a " +
-                    allotjament.getIluminacio() + " de l'allotjament: " + allotjament.getId());
         } catch (Exception e) {
             throw new ExcepcioCamping("Error en afegir incidencia: " + e.getMessage());
         }
@@ -84,6 +81,7 @@ public class LlistaIncidencies implements InLlistaIncidencies {
             for (Incidencia incidencia : llistaIncidencies) {
                 incidencies.append("Numero: " + incidencia.getNumeroIncidencia() +
                         ", Allotjament: " + incidencia.getAllotjament().getNom() +
+                        ", Id: " + incidencia.getAllotjament().getId() +
                         ", Iluminació: " + incidencia.getAllotjament().getIluminacio() +
                         ", Data: " + incidencia.getDataIncidencia() +
                         ", Tipus: " + incidencia.getTipusIncidencia() + "\n");
