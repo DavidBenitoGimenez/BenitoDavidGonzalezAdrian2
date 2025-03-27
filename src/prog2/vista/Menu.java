@@ -18,13 +18,14 @@ public class Menu<TEnum> {
     /**
      * Títol del menú
      */
+    // Lo ha hecho en el vistaCamping
+    // lo acabo de ver justo
     String _titol = "Menu Camping del Mar";
 
     /**
      * Llista amb els missatges associats a les accions
      */
-    String[] _descripcions = {"Llistar la informació de tots els allotjaments", "Llistar la informació dels allotjaments operatius"
-    , "Llistar la informació dels allotjaments no operatius", "Llistar la informació dels accessos oberts", "Llistar la informació dels accessos tancats"};
+    String[] _descripcions;
 
     /**
      * Constructor per defecte. Se li ha de passar un enumeració de les opcions.
@@ -47,7 +48,7 @@ public class Menu<TEnum> {
             _descripcions=descripcions;
         }
     }
-    
+
     /**
      * Mostra el menú d'opcions
      */
@@ -61,11 +62,11 @@ public class Menu<TEnum> {
         System.out.println(_titol.toUpperCase());
         System.out.println(lines);
         for(TEnum c : _llistaOpcions){
-            
+
             // Mostrem la posició
             int pos=((Enum)c).ordinal();
             System.out.print("\t" + (pos+1) + ".- ");
-            
+
             // Mostrem la descripció
             if(_descripcions!=null) {
                 System.out.println(_descripcions[pos]);
@@ -118,7 +119,7 @@ public class Menu<TEnum> {
             if(_descripcions!=null) {
                 maxLen=Math.max(maxLen, _descripcions[pos].length());
             } else {
-                maxLen=Math.max(maxLen, c.toString().length());                
+                maxLen=Math.max(maxLen, c.toString().length());
             }
         }
 

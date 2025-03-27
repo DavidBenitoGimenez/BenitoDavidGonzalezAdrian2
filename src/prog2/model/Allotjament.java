@@ -3,11 +3,11 @@ package prog2.model;
 public abstract class Allotjament implements InAllotjament {
     private String nom_;
     private String idAllotjament_;
-    private boolean estatAllotjament;
+    private String estatAllotjament;
     private String iluminacio;
 
     // Constructor
-    public Allotjament(String nom, String id, boolean estatAllotjament, String iluminacio) {
+    public Allotjament(String nom, String id, String estatAllotjament, String iluminacio) {
         this.nom_ = nom;
         this.idAllotjament_ = id;
         this.estatAllotjament = estatAllotjament;
@@ -29,10 +29,10 @@ public abstract class Allotjament implements InAllotjament {
     public void setId(String idAllotjament) {
         this.idAllotjament_ = idAllotjament;
     }
-    public boolean isEstatAllotjament() {
+    public String getEstatAllotjament() {
         return estatAllotjament;
     }
-    public void setEstatAllotjament(boolean estatAllotjament) {
+    public void setEstatAllotjament(String estatAllotjament) {
         this.estatAllotjament = estatAllotjament;
     }
     public String getIluminacio() {
@@ -48,7 +48,7 @@ public abstract class Allotjament implements InAllotjament {
     public String toString() {
         return "Nom = " + nom_ + ", Id = " + idAllotjament_ + "Estat allotjament: " + estatAllotjament + ", Iluminacio = " + iluminacio;    }
     public void obrirAllotjament(){
-        estatAllotjament = true;
+        estatAllotjament = "Operatiu";
         iluminacio = "100%";
     }
 }

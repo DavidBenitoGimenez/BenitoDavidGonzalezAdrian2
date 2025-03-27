@@ -7,7 +7,7 @@ public class Parcela extends Allotjament implements Serializable {
     private float metres;
 
     // Constructor ola caracola hola pisha
-    public Parcela(String nom, String idAllotjament, boolean estatAllotjament, String iluminacio, float mida, boolean connexioElectrica) {
+    public Parcela(String nom, String idAllotjament, String estatAllotjament, String iluminacio, float mida, boolean connexioElectrica) {
         super(nom, idAllotjament, estatAllotjament, iluminacio);
         this.connexioElectrica = connexioElectrica;
         this.metres = mida;

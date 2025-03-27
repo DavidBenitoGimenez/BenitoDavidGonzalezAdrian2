@@ -18,14 +18,13 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         LlistaAllotjament.clear();
     }
 
-    // Revisar, es raro que estat sea un String
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
         StringBuffer solucio = new StringBuffer();
         for (Allotjament allotjament : LlistaAllotjament) {
-            if(allotjament.isEstatAllotjament() == Boolean.parseBoolean(estat)) {
+            if(allotjament.getEstatAllotjament() == estat) {
                 solucio.append("Allotjament " + allotjament.getId())
                         .append(" Amb ID: " + allotjament.getId())
-                        .append(" Amb estat: " + allotjament.isEstatAllotjament())
+                        .append(" Amb estat: " + allotjament.getEstatAllotjament())
                         .append("\n");
             }
         }
@@ -34,10 +33,27 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         }
         return solucio.toString();
     }
+    public String llistarAllotjaments() throws ExcepcioCamping {
+        try {
+            StringBuffer solucio = new StringBuffer();
+            for (Allotjament allotjament : LlistaAllotjament) {
+                solucio.append("Allotjament " + allotjament.getId())
+                        .append(" Amb ID: " + allotjament.getId())
+                        .append(" Amb estat: " + allotjament.getEstatAllotjament())
+                        .append("\n");
+            }
+            if (solucio.isEmpty()) {
+                throw new ExcepcioCamping("No hi ha allotjaments");
+            }
+            return solucio.toString();
+        } catch (Exception e) {
+            throw new ExcepcioCamping("Error en llistar allotjaments " + e.getMessage());
+        }
+    }
 
     public boolean containsAllotjamentOperatiu() {
         for (Allotjament allotjament : LlistaAllotjament) {
-            if (allotjament.isEstatAllotjament()) {
+            if (allotjament.getEstatAllotjament().equals("Operatiu")) {
                 return true;
             }
         }
@@ -48,13 +64,13 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         return LlistaAllotjament.contains(allotjament);
     }
 
-    public Allotjament getAllotjament(String nom) throws ExcepcioCamping {
+    public Allotjament getAllotjament(String idAllotjament_) throws ExcepcioCamping {
         for (Allotjament allotjament : LlistaAllotjament) {
-            if (allotjament.getNom().equals(nom)) {
+            if (allotjament.getId().equals(idAllotjament_)) {
                 return allotjament;
             }
         }
-        throw new ExcepcioCamping("No s'ha trobat l'allotjament amb nom " + nom);
+        throw new ExcepcioCamping("No s'ha trobat l'allotjament amb Id " + idAllotjament_);
     }
 
     public void add(Allotjament allotjament) {

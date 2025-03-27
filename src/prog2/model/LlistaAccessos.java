@@ -2,6 +2,8 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class LlistaAccessos implements InLlistaAccessos {
     private final ArrayList<Acces> llistaAccessos;
@@ -44,13 +46,7 @@ public class LlistaAccessos implements InLlistaAccessos {
 
     // Revisar
     public void actualitzaEstatAccessos() throws ExcepcioCamping {
-        try {
-            for (Acces acc : llistaAccessos) {
-                acc.tancarAcces();
-            }
-        } catch (Exception e) {
-            throw new ExcepcioCamping("Error en actualitzar estats d'accessos: " + e.getMessage());
-        }
+
     }
 
     public int calculaAccessosAccessibles() throws ExcepcioCamping {
